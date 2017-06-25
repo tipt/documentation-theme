@@ -1,0 +1,60 @@
+<% var hasMembers = doc.members.static.length || doc.members.instance.length %>
+<li><a
+  href='#<%=slug(doc.namespacePath + '/' + doc.namespace)%>'
+  class="<% if (doc.kind === 'note') { %>h5 bold black caps<% } %><% if (hasMembers) { %> toggle-sibling<% } %>">
+  <%- doc.name %>
+  <% if (hasMembers) { %><span class='icon'>▸</span><% } %>
+</a>
+<% if (hasMembers) { %>
+<div class='toggle-target display-none'>
+  <% if (doc.members.static && doc.members.static.length) { %>
+  <ul class='list-reset py1-ul pl1'>
+    <li class='h5'><span>Static members</span></li>
+    <% doc.members.static.forEach(function(member) { %>
+      <li><a
+        href='#<%=slug(member.namespace)%>'
+        class='regular pre-open'>
+        .<%- member.name %>
+      </a></li>
+    <% }) %>
+    </ul>
+  <% } %>
+  <% if (doc.members.instance && doc.members.instance.length) { %>
+    <ul class='list-reset py1-ul pl1'>
+      <li class='h5'><span>Instance members</span></li>
+      <% doc.members.instance.forEach(function(member) { %>
+      <li><a
+        href='#<%=slug(member.namespace)%>'
+        class='regular pre-open'>
+        #<%- member.name %>
+      </a></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  <% if (doc.members.inner && doc.members.inner.length) { %>
+    <ul class='list-reset py1-ul pl1'>
+      <li class='h5'><span>Inner members</span></li>
+      <% doc.members.inner.forEach(function(member) { %>
+      <li><a
+        href='#<%=slug(member.namespace)%>'
+        class='regular pre-open'>
+        #<%- member.name %>
+      </a></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  <% if (doc.members.events && doc.members.events.length) { %>
+    <ul class='list-reset py1-ul pl1'>
+      <li class='h5'>Events</li>
+      <% doc.members.events.forEach(function(member) { %>
+        <li><a
+          href='#<%=slug(member.namespace)%>'
+          class='regular pre-open'>
+          ⓔ <%- member.name %>
+        </a></li>
+      <% }) %>
+    </ul>
+  <% } %>
+</div>
+<% } %>
+</li>

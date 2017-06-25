@@ -1,0 +1,22 @@
+<li>
+  <a
+    href='#<%=slug(item.path + '/' + item.name)%>'
+    class="toggle-sibling black bold">
+    <%- item.name %>
+    <span class='icon'>▸</span>
+  </a>
+  <div class='toggle-target display-none'>
+    <ul class="list-reset py1-ul pl1">
+      <% item.items.forEach(function(item) { %>
+        <%= renderSidebarItem({ doc: item }) %>
+      <% }) %>
+      <% for (var k in item.children) { %>
+        <%= renderSidebarNamespace({
+          item: item.children[k],
+          renderSidebarItem: renderSidebarItem,
+          renderSidebarNamespace: renderSidebarNamespace
+        }) %>
+      <% } %>
+    </ul>
+  </div>
+</li>

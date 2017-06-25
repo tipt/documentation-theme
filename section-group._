@@ -1,0 +1,32 @@
+<div class="mb2">
+  <h2 class="p2 toggle-sibling" id="<%=slug(path + '/' + name)%>">
+    <a class='icon pin-right py1 dark-link caret-right'>▾</a>
+    <%- name %>
+  </h2>
+  <div class="toggle-target">
+    <% items.forEach(function(item) { %>
+      <% if (item.kind !== 'note') { %>
+        <%= renderSection({
+          section: item,
+          renderSection: renderSection,
+          renderSectionList: renderSectionList
+        }) %>
+      <% } else { %>
+        <div class='keyline-top-not py2'><%=renderNote({
+          note: item
+        })%></div>
+      <% } %>
+    <% }) %>
+    <% for (var k in children) { %>
+      <%= renderSectionGroup({
+        name: children[k].name,
+        path: children[k].path,
+        items: children[k].items,
+        children: children[k].children,
+        renderSection: renderSection,
+        renderSectionList: renderSectionList,
+        renderSectionGroup: renderSectionGroup
+      }) %>
+    <% } %>
+  </div>
+</div>

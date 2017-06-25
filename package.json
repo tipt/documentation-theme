@@ -1,0 +1,22 @@
+{
+  "name": "tipt-documentation-theme",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Tipt documentation theme",
+  "main": "index.js",
+  "license": "ISC",
+  "repository": "tiptim/tipt-documentation-theme",
+  "dependencies": {
+    "concat-stream": "^1.6.0",
+    "doctrine-temporary-fork": "^2.0.0-alpha-allowarrayindex",
+    "github-slugger": "^1.1.3",
+    "highlight.js": "^9.12.0",
+    "lodash": "^4.17.4",
+    "remark": "^7.0.1",
+    "remark-html": "^6.0.1",
+    "unist-builder": "^1.0.2",
+    "unist-util-visit": "^1.1.3",
+    "vinyl": "^2.0.2",
+    "vinyl-fs": "^2.4.4"
+  }
+}
